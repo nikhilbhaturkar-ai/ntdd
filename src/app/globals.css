@@ -673,12 +673,33 @@ body {
 }
 
 .contact-column ul li {
-    color: var(--text-secondary);
     font-size: 0.9rem;
-    display: flex;
-    gap: 10px;
+    margin-bottom: 15px;
 }
 
+.contact-links li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: color 0.3s ease;
+}
+
+.contact-links li a:hover {
+    color: var(--text-primary);
+}
+
+.contact-links .icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.contact-links li a:hover .icon {
+    color: var(--text-primary);
+}
 .contact-column .icon {
     opacity: 0.7;
 }
