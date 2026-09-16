@@ -1,20 +1,16 @@
-import { Barlow, Cormorant } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./globals.css";
 
-const barlow = Barlow({
-  variable: "--font-barlow",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"]
 });
 
-const cormorant = Cormorant({
-  variable: "--font-cormorant",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"]
 });
 
 export const metadata = {
@@ -25,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${barlow.variable} ${cormorant.variable}`}>
+      <body className={`${inter.variable} ${outfit.variable}`}>
         <Navbar />
         {children}
         <Footer />
