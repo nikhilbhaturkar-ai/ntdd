@@ -99,7 +99,7 @@ export default function Shop() {
 
   return (
     <div className="shop-page fade-in visible">
-      <div className="shop-header">
+      <div className="shop-header" data-reveal>
         <h2>Explore Products</h2>
         <p>Browse our collection of 3D printed products.</p>
       </div>
@@ -136,7 +136,7 @@ export default function Shop() {
         <p>{filteredProducts.length} products</p>
       </div>
 
-      <div className="product-grid">
+      <div className="product-grid" data-stagger>
         {filteredProducts.map(product => (
           <div key={product.id} className="product-card">
             <div className="product-image-container">

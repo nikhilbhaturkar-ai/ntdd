@@ -80,7 +80,7 @@ export default function About() {
   return (
     <div className="about-page fade-in visible">
       {/* 04 ABOUT THE LAB */}
-      <section className="about-section split-layout">
+      <section className="about-section split-layout" data-reveal>
         <div className="about-content">
           <div className="about-tag"><span>04</span> ABOUT THE LAB</div>
           <h2 className="about-headline">
@@ -93,7 +93,7 @@ export default function About() {
             Today our farm runs 13 machines around the clock — printing everything from wedding-return gifts to drone prototypes for startups. We still confirm every single order ourselves, on a real phone call.
           </p>
           
-          <div className="about-stats">
+          <div className="about-stats" data-stagger>
             <div className="stat-item">
               <span className="stat-number">13</span>
               <span className="stat-label">MACHINES IN THE FARM</span>
@@ -114,11 +114,11 @@ export default function About() {
       </section>
 
       {/* 05 THE MACHINES */}
-      <section className="about-section">
+      <section className="about-section" data-reveal>
         <div className="about-tag"><span>05</span> THE MACHINES</div>
         <h2 className="section-title">Meet the print farm</h2>
         
-        <div className="machines-grid">
+        <div className="machines-grid" data-stagger>
           {machines.map((machine, idx) => (
             <div key={idx} className="machine-card">
               <div className="machine-image-wrapper">
@@ -135,11 +135,11 @@ export default function About() {
       </section>
 
       {/* 06 HOW WE WORK */}
-      <section className="about-section">
+      <section className="about-section" data-reveal>
         <div className="about-tag"><span>06</span> HOW WE WORK</div>
         <h2 className="section-title">Obsession, standardised</h2>
         
-        <div className="process-grid">
+        <div className="process-grid" data-stagger>
           {processes.map((proc, idx) => (
             <div key={idx} className="process-card">
               <span className="process-num">{proc.num}</span>
@@ -152,7 +152,7 @@ export default function About() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="about-cta">
+      <section className="about-cta" data-reveal>
         <h2>Want to visit the lab?</h2>
         <p>We love showing off our machines. Drop us a line and come say hello.</p>
         <button className="btn-bw-solid">Get in Touch</button>

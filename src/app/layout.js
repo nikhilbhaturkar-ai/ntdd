@@ -1,6 +1,7 @@
 import { Inter, Outfit } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollReveal from "./components/ScrollReveal";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${outfit.variable}`}>
         <Navbar />
+        <ScrollReveal />
         {children}
         <Footer />
         
