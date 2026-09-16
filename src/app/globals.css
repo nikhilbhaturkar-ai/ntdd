@@ -1,26 +1,333 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --bg-color: #050505;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --font-heading: var(--font-cormorant), 'Cormorant', serif;
+    --font-body: var(--font-barlow), 'Barlow', sans-serif;
+    --accent-color: #25D366; /* WhatsApp Green */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header & Navigation */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.logo h1 {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo .box {
+    border: 1px solid white;
+    padding: 2px 6px;
+    font-weight: normal;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--text-primary);
+    padding-bottom: 2px;
+}
+
+.icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h2 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #eaeaea;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Slider Nav */
+.slider-nav {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.slider-nav .dot {
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--text-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-nav .dot.active {
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+.slider-nav .arrow, .slider-nav .pause {
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* Feature Sections */
+.feature-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.feature-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+    transition: filter 0.5s, transform 0.5s;
+}
+
+.feature-section:hover .feature-image img {
+    filter: brightness(1);
+    transform: scale(1.02);
+}
+
+.feature-text {
+    padding: 10% 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.feature-text .subtitle {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.feature-text h3 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.feature-text p {
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-color);
+}
+
+/* Info Section */
+.info-section {
+    padding: 100px 20%;
+    text-align: center;
+}
+
+.info-section h3 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.info-section .intro {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.info-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.info-section ul {
+    list-style: none;
+    text-align: left;
+    display: inline-block;
+}
+
+.info-section ul li {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 20px;
+}
+
+.info-section ul li::before {
+    content: '•';
+    color: var(--text-primary);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.info-section ul li strong {
+    color: var(--text-primary);
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: var(--accent-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .feature-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .right-image .feature-image {
+        grid-row: 1;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .navbar {
+        display: none;
+    }
+    
+    .info-section {
+        padding: 60px 10%;
+    }
 }
