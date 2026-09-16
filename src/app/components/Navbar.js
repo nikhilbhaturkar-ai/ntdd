@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import CartSidebar from "./CartSidebar";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +23,10 @@ export default function Navbar() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
   };
 
   return (
@@ -46,7 +52,7 @@ export default function Navbar() {
           <div className="avatar desktop-only">
             <img src="https://i.pravatar.cc/150?img=11" alt="User Avatar" />
           </div>
-          <button className="btn-order desktop-only">
+          <button className="btn-order desktop-only" onClick={toggleCart}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
@@ -69,6 +75,9 @@ export default function Navbar() {
             )}
           </button>
         </div>
+        
+        {/* Cart Sidebar */}
+        <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       </header>
   );
 }
