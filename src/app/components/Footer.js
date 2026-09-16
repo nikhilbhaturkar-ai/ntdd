@@ -47,9 +47,9 @@ export default function Footer() {
         <div className="footer-column contact-column">
           <h3>TALK TO THE LAB</h3>
           <ul>
-            <li><span className="icon">📞</span> +91 98765 43210</li>
-            <li><span className="icon">✉️</span> hello@forge3d.in</li>
-            <li><span className="icon">📍</span> Workshop 12, Makers Quarter, Bengaluru, Karnataka 560001</li>
+            <li><span className="icon">📞</span> +91 9175256675</li>
+            <li><span className="icon">✉️</span> ntdd.business.solution@gmail.com</li>
+            <li><span className="icon">📍</span> Streets of Europe ,24, Maan Road, Phase 1, Rajiv Gandhi Infotech Park, Hinjawadi, Pimpri-Chinchwad, Pune, Maharashtra 411057</li>
           </ul>
         </div>
       </div>
