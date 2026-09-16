@@ -80,19 +80,33 @@ export default function Home() {
     <>
       <main>
         {/* Hero Section */}
-        <section
-          className="hero"
-          style={{ 
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('${slides[currentSlide].image}')`,
-            transition: 'background-image 0.5s ease-in-out'
-          }}
-        >
-          <div className="hero-content fade-in visible" key={currentSlide}>
+        <section className="hero">
+          {/* Background Images for Smooth Transition */}
+          {slides.map((slide, idx) => (
+            <div
+              key={idx}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('${slide.image}')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: idx === currentSlide ? 1 : 0,
+                transition: 'opacity 1s ease-in-out',
+                zIndex: -1,
+              }}
+            />
+          ))}
+
+          <div className="hero-content fade-in visible" key={currentSlide} style={{ zIndex: 1, animation: 'fadeInUp 0.8s ease forwards' }}>
             <h2>{slides[currentSlide].title}</h2>
             <p>{slides[currentSlide].desc}</p>
           </div>
           {/* Slider Dots */}
-          <div className="slider-nav">
+          <div className="slider-nav" style={{ zIndex: 1 }}>
             <span className="arrow" onClick={prevSlide} style={{cursor: 'pointer'}}>&lt;</span>
             {slides.map((_, idx) => (
               <span 
@@ -162,21 +176,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Information Section */}
-        <section className="info-section fade-in" ref={addToRefs}>
-          <h3>What is 3D Printing?</h3>
-          <p className="intro">3D printing, or additive manufacturing, is a process that creates objects layer by layer from a digital design. It's used across industries for everything from prototyping to final products, offering flexibility in materials like plastic, metal, and resin.</p>
-          
-          <h4>Benefits of 3D Printing:</h4>
-          <ul>
-            <li><strong>Customization:</strong> Ideal for creating personalized products tailored to specific needs.</li>
-            <li><strong>Faster Prototyping:</strong> Quickly test and iterate designs, reducing product development time.</li>
-            <li><strong>Cost-Effective:</strong> Affordable for low-volume production with minimal waste.</li>
-            <li><strong>Complex Designs:</strong> Produce intricate, unique designs that are hard to achieve with traditional methods.</li>
-            <li><strong>Eco-Friendly:</strong> Reduces material waste by using only the required amount of material, making it a more sustainable option for production.</li>
-          </ul>
-        </section>
       </main>
+
 
 
     </>
