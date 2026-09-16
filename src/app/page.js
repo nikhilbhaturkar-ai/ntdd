@@ -4,21 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
   const fadeRefs = useRef([]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const observerOptions = {
@@ -51,28 +37,6 @@ export default function Home() {
 
   return (
     <>
-      <header className={`header ${scrolled ? "scrolled" : ""}`}>
-        <div className="logo">
-          <h1><span className="dot"></span>THE <span className="box">3D</span> CRAFTED</h1>
-        </div>
-        <nav className="navbar">
-          <ul>
-            <li><a href="#" className="active">Home</a></li>
-            <li><a href="#">Catalog</a></li>
-            <li><a href="#">Occasion</a></li>
-            <li><a href="#">Prototyping</a></li>
-            <li><a href="#">Collaborate</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-        <div className="icons">
-          <span className="icon-search">🔍</span>
-          <span className="icon-user">👤</span>
-          <span className="icon-cart">🛍️</span>
-        </div>
-      </header>
-
       <main>
         {/* Hero Section */}
         <section
@@ -98,7 +62,7 @@ export default function Home() {
         {/* Feature Sections */}
         <section className="feature-section left-image fade-in" ref={addToRefs}>
           <div className="feature-image">
-            <Image src="/images/personalized_gift_1789548500986.jpg" alt="Personalized Gifts" fill style={{ objectFit: 'cover' }} />
+            <Image src="/images/personalized_gift_1789548500986.jpg" alt="Personalized Gifts" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
           <div className="feature-text">
             <span className="subtitle">THE 3D CRAFTED</span>
@@ -116,13 +80,13 @@ export default function Home() {
             <a href="#" className="btn-outline">HOP IN</a>
           </div>
           <div className="feature-image">
-            <Image src="/images/custom_prototype_1789548548021.jpg" alt="Custom Prototype" fill style={{ objectFit: 'cover' }} />
+            <Image src="/images/custom_prototype_1789548548021.jpg" alt="Custom Prototype" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
         </section>
 
         <section className="feature-section left-image fade-in" ref={addToRefs}>
           <div className="feature-image">
-            <Image src="/images/home_decor_1789548521878.jpg" alt="Home Decor & Accessories" fill style={{ objectFit: 'cover' }} />
+            <Image src="/images/home_decor_1789548521878.jpg" alt="Home Decor & Accessories" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
           <div className="feature-text">
             <span className="subtitle">THE 3D CRAFTED</span>
@@ -140,7 +104,7 @@ export default function Home() {
             <a href="#" className="btn-outline">HOP IN</a>
           </div>
           <div className="feature-image">
-            <Image src="/images/pet_accessories_1789548563046.jpg" alt="Pet Accessories" fill style={{ objectFit: 'cover' }} />
+            <Image src="/images/pet_accessories_1789548563046.jpg" alt="Pet Accessories" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
         </section>
 
@@ -160,13 +124,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Floating WhatsApp Button */}
-      <a href="#" className="whatsapp-float">
-        {/* SVG icon for WhatsApp */}
-        <svg viewBox="0 0 32 32" fill="white" width="30" height="30">
-          <path d="M16 1.4C7.9 1.4 1.4 7.9 1.4 16c0 2.6.7 5.1 1.9 7.3L1.4 30.6l7.5-2c2.2 1.1 4.6 1.7 7.1 1.7 8.1 0 14.6-6.5 14.6-14.6S24.1 1.4 16 1.4zm7.9 21.2c-.3.9-1.8 1.7-2.5 1.7-.7.1-1.4.1-2.4-.2-4.1-1.3-6.9-5.4-7.1-5.7-.2-.3-1.7-2.3-1.7-4.4s1.1-3 1.5-3.4c.4-.4.8-.5 1.1-.5.3 0 .5 0 .8.1.3 0 .7-.1 1.1.8.4 1 .4 1.4 1.3 3.1.1.3.1.6 0 .8-.1.3-.2.4-.4.7-.2.2-.4.5-.6.7-.2.2-.4.4-.1.9.4.7.8 1.4 1.5 2 1 .8 1.8 1.2 2.6 1.6.4.2.7.2.9-.1.3-.3.9-1.2 1.2-1.6.3-.4.6-.3 1 .1.4.2 2.4 1.1 2.8 1.3.4.2.6.3.7.5.1.3.1.9-.2 1.8z"/>
-        </svg>
-      </a>
+
     </>
   );
 }
