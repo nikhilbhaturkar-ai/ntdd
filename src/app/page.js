@@ -3,8 +3,49 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+const slides = [
+  {
+    image: "/images/sports_hero_1789548478020.jpg",
+    title: "SPORTS",
+    desc: "Unlock the future of sports with advanced, custom-designed 3D printed gear for unmatched performance and style"
+  },
+  {
+    image: "/images/personalized_gift_1789548500986.jpg",
+    title: "PERSONALIZED GIFTS",
+    desc: "Create something truly unique with our 3D printed personalized items! Elevate your space with a personalized touch."
+  },
+  {
+    image: "/images/custom_prototype_1789548548021.jpg",
+    title: "CUSTOM PROTOTYPE",
+    desc: "Unlock innovation with our 3D-printed custom prototyping services. Perfect for testing and product development."
+  },
+  {
+    image: "/images/home_decor_1789548521878.jpg",
+    title: "HOME DÉCOR",
+    desc: "Add a modern touch to your home with our 3D-printed décor and accessories. Functional art made to enhance your space."
+  },
+  {
+    image: "/images/pet_accessories_1789548563046.jpg",
+    title: "PET ACCESSORIES",
+    desc: "Custom 3D printed pet accessories designed for style, comfort, and durability using premium-quality materials."
+  }
+];
+
 export default function Home() {
   const fadeRefs = useRef([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   useEffect(() => {
     const observerOptions = {
@@ -41,21 +82,34 @@ export default function Home() {
         {/* Hero Section */}
         <section
           className="hero"
-          style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/images/sports_hero_1789548478020.jpg')` }}
+          style={{ 
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('${slides[currentSlide].image}')`,
+            transition: 'background-image 0.5s ease-in-out'
+          }}
         >
-          <div className="hero-content fade-in" ref={addToRefs}>
-            <h2>SPORTS</h2>
-            <p>Unlock the future of sports with advanced, custom-designed 3D printed gear for unmatched performance and style</p>
+          <div className="hero-content fade-in visible" key={currentSlide}>
+            <h2>{slides[currentSlide].title}</h2>
+            <p>{slides[currentSlide].desc}</p>
           </div>
           {/* Slider Dots */}
           <div className="slider-nav">
-            <span className="arrow">&lt;</span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot active"></span>
-            <span className="arrow">&gt;</span>
-            <span className="pause">||</span>
+            <span className="arrow" onClick={prevSlide} style={{cursor: 'pointer'}}>&lt;</span>
+            {slides.map((_, idx) => (
+              <span 
+                key={idx} 
+                className={`dot ${idx === currentSlide ? 'active' : ''}`}
+                onClick={() => setCurrentSlide(idx)}
+                style={{cursor: 'pointer'}}
+              ></span>
+            ))}
+            <span className="arrow" onClick={nextSlide} style={{cursor: 'pointer'}}>&gt;</span>
+            <span 
+              className="pause" 
+              onClick={() => setIsPaused(!isPaused)} 
+              style={{cursor: 'pointer', opacity: isPaused ? 0.5 : 1}}
+            >
+              {isPaused ? '▶' : '||'}
+            </span>
           </div>
         </section>
 
