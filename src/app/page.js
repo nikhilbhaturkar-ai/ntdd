@@ -130,49 +130,49 @@ export default function Home() {
         {/* Feature Sections */}
         <section className="feature-section left-image fade-in" ref={addToRefs}>
           <div className="feature-image">
-            <Image src="/images/personalized_gift_1789548500986.jpg" alt="Personalized Gifts" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
+            <Image src="/images/personalized_gift_1789548500986.jpg" alt="Shop Products" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
           <div className="feature-text">
             <span className="subtitle">THE 3D CRAFTED</span>
-            <h3>Personalized Gifts</h3>
-            <p>Create something truly unique with our 3D printed personalized items! Whether it's a special gift or a custom piece for your home, we craft each item with precision to reflect your style. Design your perfect creation today! Elevate your space with a personalized touch, as our meticulous process ensures each item is a true reflection of your individual style and taste.</p>
-            <a href="#" className="btn-outline">HOP IN</a>
+            <h3>Shop</h3>
+            <p>Browse our curated collection of ready-to-ship 3D printed products — from desk toys and planters to cable organizers and artistic sculptures. Each piece is precision-printed and quality-checked before it leaves the lab.</p>
+            <a href="/shop" className="btn-outline">Browse Collection</a>
           </div>
         </section>
 
         <section className="feature-section right-image fade-in" ref={addToRefs}>
           <div className="feature-text">
             <span className="subtitle">THE 3D CRAFTED</span>
-            <h3>Custom Prototype</h3>
-            <p>Unlock innovation with our 3D-printed custom prototyping services. We offer fast, precise, and cost-effective solutions to bring your ideas to life, from concept to creation. Perfect for testing, design iterations, and product development.</p>
-            <a href="#" className="btn-outline">HOP IN</a>
+            <h3>Custom Print</h3>
+            <p>Got an STL file or a wild idea? Upload your 3D model or describe what you need, and we'll bring it to life layer by layer. Choose your material, colour, and finish — we handle the rest.</p>
+            <a href="/custom-print" className="btn-outline">Start Your Print</a>
           </div>
           <div className="feature-image">
-            <Image src="/images/custom_prototype_1789548548021.jpg" alt="Custom Prototype" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
+            <Image src="/images/custom_prototype_1789548548021.jpg" alt="Custom Print" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
         </section>
 
         <section className="feature-section left-image fade-in" ref={addToRefs}>
           <div className="feature-image">
-            <Image src="/images/home_decor_1789548521878.jpg" alt="Home Decor & Accessories" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
+            <Image src="/images/home_decor_1789548521878.jpg" alt="Material Guide" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
           <div className="feature-text">
             <span className="subtitle">THE 3D CRAFTED</span>
-            <h3>Home Décor & Accessories</h3>
-            <p>Add a modern touch to your home with our 3D-printed décor and accessories. From custom designs to functional art, each piece is made to enhance your space with style and innovation.</p>
-            <a href="#" className="btn-outline">HOP IN</a>
+            <h3>Material Guide</h3>
+            <p>Not sure which material fits your project? Explore our detailed guide covering PLA, PETG, ABS, Resin and more — with comparisons on strength, flexibility, heat resistance, and finish quality.</p>
+            <a href="/material-guide" className="btn-outline">Explore Materials</a>
           </div>
         </section>
 
         <section className="feature-section right-image fade-in" ref={addToRefs}>
           <div className="feature-text">
             <span className="subtitle">THE 3D CRAFTED</span>
-            <h3>Pet Accessories</h3>
-            <p>Custom 3D printed pet accessories designed for style, comfort, and durability. Explore personalized pet tags, feeding accessories, decorative items, and unique pet products made with premium-quality materials and modern 3D printing technology.</p>
-            <a href="#" className="btn-outline">HOP IN</a>
+            <h3>Get a Quote</h3>
+            <p>Have a project in mind? Tell us about your requirements — quantity, material, dimensions — and receive a detailed quote within 24 hours. No commitments, just honest pricing from real humans.</p>
+            <a href="/get-a-quote" className="btn-outline">Request a Quote</a>
           </div>
           <div className="feature-image">
-            <Image src="/images/pet_accessories_1789548563046.jpg" alt="Pet Accessories" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
+            <Image src="/images/pet_accessories_1789548563046.jpg" alt="Get a Quote" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
         </section>
 
