@@ -1,0 +1,165 @@
+{
+  "communities": {
+    "0": [
+      "eslint",
+      "eslint_config_next",
+      "package",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_name",
+      "package_private",
+      "package_version"
+    ],
+    "1": [
+      "src_app_components_footer",
+      "src_app_components_footer_footer",
+      "src_app_components_navbar",
+      "src_app_components_navbar_navbar",
+      "src_app_layout",
+      "src_app_layout_barlow",
+      "src_app_layout_cormorant",
+      "src_app_layout_metadata",
+      "src_app_layout_rootlayout"
+    ],
+    "2": [
+      "next",
+      "package_dependencies",
+      "package_dependencies_next",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "react",
+      "react_dom"
+    ],
+    "3": [
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_start"
+    ],
+    "4": [
+      "jsconfig",
+      "jsconfig_compileroptions",
+      "jsconfig_compileroptions_paths"
+    ],
+    "5": [
+      "src_app_material_guide_page",
+      "src_app_material_guide_page_materialguide",
+      "src_app_material_guide_page_materialsdata"
+    ],
+    "6": [
+      "eslint_config",
+      "eslint_config_eslintconfig"
+    ],
+    "7": [
+      "next_config",
+      "next_config_nextconfig"
+    ],
+    "8": [
+      "src_app_about_page",
+      "src_app_about_page_about"
+    ],
+    "9": [
+      "src_app_custom_print_page",
+      "src_app_custom_print_page_customprint"
+    ],
+    "10": [
+      "src_app_get_a_quote_page",
+      "src_app_get_a_quote_page_getaquote"
+    ],
+    "11": [
+      "src_app_page",
+      "src_app_page_home"
+    ],
+    "12": [
+      "src_app_shop_page",
+      "src_app_shop_page_shop"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2222222222222222,
+    "1": 0.2777777777777778,
+    "2": 0.2857142857142857,
+    "3": 0.4,
+    "4": 0.6666666666666666,
+    "5": 0.6666666666666666,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0
+  },
+  "gods": [
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 5
+    },
+    {
+      "id": "jsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 2
+    },
+    {
+      "id": "package_dependencies_next",
+      "label": "next",
+      "degree": 2
+    },
+    {
+      "id": "package_dependencies_react",
+      "label": "react",
+      "degree": 2
+    },
+    {
+      "id": "package_dependencies_react_dom",
+      "label": "react-dom",
+      "degree": 2
+    },
+    {
+      "id": "package_devdependencies_eslint",
+      "label": "eslint",
+      "degree": 2
+    },
+    {
+      "id": "package_devdependencies_eslint_config_next",
+      "label": "eslint-config-next",
+      "degree": 2
+    },
+    {
+      "id": "src_app_components_footer_footer",
+      "label": "Footer()",
+      "degree": 2
+    },
+    {
+      "id": "src_app_components_navbar_navbar",
+      "label": "Navbar()",
+      "degree": 2
+    },
+    {
+      "id": "eslint_config_eslintconfig",
+      "label": "eslintConfig",
+      "degree": 1
+    }
+  ],
+  "surprises": [],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `dependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.082) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `scripts` connect `scripts` to `package.json`?",
+      "why": "High betweenness centrality (0.060) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `eslintConfig`, `paths`, `nextConfig` to the rest of the system?",
+      "why": "19 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}
