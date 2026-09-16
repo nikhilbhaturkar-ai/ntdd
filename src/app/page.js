@@ -85,20 +85,35 @@ export default function Home() {
           {slides.map((slide, idx) => (
             <div
               key={idx}
+              className="hero-image"
               style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('${slide.image}')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
                 opacity: idx === currentSlide ? 1 : 0,
                 transition: 'opacity 1s ease-in-out',
                 zIndex: -1,
               }}
-            />
+            >
+              <Image 
+                src={slide.image} 
+                alt={slide.title} 
+                fill 
+                style={{ objectFit: 'cover', objectPosition: 'center' }} 
+                sizes="100vw"
+                priority={idx === 0}
+              />
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8))'
+              }} />
+            </div>
           ))}
 
           <div className="hero-content fade-in visible" key={currentSlide} style={{ zIndex: 1, animation: 'fadeInUp 0.8s ease forwards' }}>
@@ -130,7 +145,7 @@ export default function Home() {
         {/* Feature Sections */}
         <section className="feature-section left-image fade-in" ref={addToRefs}>
           <div className="feature-image">
-            <Image src="/images/personalized_gift_1789548500986.jpg" alt="Shop Products" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" />
+            <Image src="/images/personalized_gift_1789548500986.jpg" alt="Shop Products" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 33vw" priority />
           </div>
           <div className="feature-text">
             <span className="subtitle">THE 3D CRAFTED</span>
