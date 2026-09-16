@@ -1829,21 +1829,23 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* Typography Scaling */
-    h1 {
-        font-size: 3rem !important;
-    }
-    
-    h2 {
-        font-size: 2.5rem !important;
-    }
-    
-    .hero-section h1 {
-        font-size: 3.5rem !important;
+    /* Typography Scaling — scoped to content, not the logo */
+    .hero-content h2 {
+        font-size: 2.8rem !important;
     }
     
     .about-cta h2, .shop-header h2, .quote-header h2, .mg-header h2, .cp-header h2 {
         font-size: 2.2rem !important;
+    }
+    
+    .feature-text h3 {
+        font-size: 1.8rem !important;
+    }
+    
+    /* Logo scaling on mobile */
+    .logo h1 {
+        font-size: 0.9rem !important;
+        letter-spacing: 1px;
     }
     
     /* Layout Collapses */
@@ -1854,6 +1856,12 @@ body {
     
     .products-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Footer mobile */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 40px;
     }
 }
 
