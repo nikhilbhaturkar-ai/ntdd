@@ -396,7 +396,8 @@ body {
     transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.navbar a:hover::after {
+.navbar a:hover::after,
+.navbar a.active::after {
     width: 100%;
 }
 

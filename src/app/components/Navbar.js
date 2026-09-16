@@ -1,9 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import CartSidebar from "./CartSidebar";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -40,11 +42,11 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className={`navbar ${isMobileMenuOpen ? "active" : ""}`}>
           <ul>
-            <li><Link href="/shop" onClick={() => setIsMobileMenuOpen(false)}>Shop</Link></li>
-            <li><Link href="/custom-print" onClick={() => setIsMobileMenuOpen(false)}>Custom Print</Link></li>
-            <li><Link href="/material-guide" onClick={() => setIsMobileMenuOpen(false)}>Material Guide</Link></li>
-            <li><Link href="/get-a-quote" onClick={() => setIsMobileMenuOpen(false)}>Get a Quote</Link></li>
-            <li><Link href="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link></li>
+            <li><Link href="/shop" className={pathname === '/shop' ? 'active' : ''} onClick={() => setIsMobileMenuOpen(false)}>Shop</Link></li>
+            <li><Link href="/custom-print" className={pathname === '/custom-print' ? 'active' : ''} onClick={() => setIsMobileMenuOpen(false)}>Custom Print</Link></li>
+            <li><Link href="/material-guide" className={pathname === '/material-guide' ? 'active' : ''} onClick={() => setIsMobileMenuOpen(false)}>Material Guide</Link></li>
+            <li><Link href="/get-a-quote" className={pathname === '/get-a-quote' ? 'active' : ''} onClick={() => setIsMobileMenuOpen(false)}>Get a Quote</Link></li>
+            <li><Link href="/about" className={pathname === '/about' ? 'active' : ''} onClick={() => setIsMobileMenuOpen(false)}>About</Link></li>
           </ul>
         </nav>
         
