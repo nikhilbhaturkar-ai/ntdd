@@ -4,6 +4,7 @@ import { dark } from "@clerk/themes";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollReveal from "./components/ScrollReveal";
+import { CartProvider } from "./context/CartContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,15 +27,17 @@ export default function RootLayout({ children }) {
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en">
         <body className={`${inter.variable} ${outfit.variable}`}>
-          <Navbar />
-          <ScrollReveal />
-          {children}
-          <Footer />
-          
-          {/* Floating WhatsApp Button (Global) */}
-          <a href="https://wa.me/919175256675?text=Hi%20I%20am%20interested%20in%20your%20product" target="_blank" rel="noopener noreferrer" className="whatsapp-float">
-            <img src="/images/whatsapp_icon.png" width="35" height="35" alt="WhatsApp" style={{ objectFit: 'contain' }} />
-          </a>
+          <CartProvider>
+            <Navbar />
+            <ScrollReveal />
+            {children}
+            <Footer />
+            
+            {/* Floating WhatsApp Button (Global) */}
+            <a href="https://wa.me/919175256675?text=Hi%20I%20am%20interested%20in%20your%20product" target="_blank" rel="noopener noreferrer" className="whatsapp-float">
+              <img src="/images/whatsapp_icon.png" width="35" height="35" alt="WhatsApp" style={{ objectFit: 'contain' }} />
+            </a>
+          </CartProvider>
         </body>
       </html>
     </ClerkProvider>

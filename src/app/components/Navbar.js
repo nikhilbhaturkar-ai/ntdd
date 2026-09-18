@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import CartSidebar from "./CartSidebar";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { cart, isCartOpen, setIsCartOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,11 +63,11 @@ export default function Navbar() {
               <UserButton afterSignOutUrl="/" />
             </div>
           </Show>
-          <button className="btn-order desktop-only" onClick={toggleCart}>
+          <button className="btn-order desktop-only" onClick={toggleCart} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            Order
+            Order {cart.length > 0 && `(${cart.length})`}
           </button>
           
           {/* Hamburger Menu Button */}
