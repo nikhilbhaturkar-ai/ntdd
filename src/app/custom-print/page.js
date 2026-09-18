@@ -34,10 +34,17 @@ export default function CustomPrint() {
         <p>Drop your 3D file, dial in the specs, and watch the estimate react. The request — with your file — lands straight in the owner's inbox.</p>
       </div>
 
-      <div className="cp-layout">
+      <form className="cp-layout" action="https://formsubmit.co/ntdd.business.solutions@gmail.com" method="POST" encType="multipart/form-data">
+        <input type="hidden" name="_subject" value="New Custom Print Request!" />
+        <input type="hidden" name="Material" value={material} />
+        <input type="hidden" name="Infill_Density" value={`${density}%`} />
+        <input type="hidden" name="Layer_Height" value={layerHeight} />
+        <input type="hidden" name="Quantity" value={quantity} />
+        <input type="hidden" name="Color" value={color} />
+
         {/* Left Column: Configuration */}
         <div className="cp-config">
-          <div className="dropzone">
+          <label className="dropzone" htmlFor="3d-file-upload" style={{ cursor: 'pointer' }}>
             <div className="drop-icon">
               <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" strokeWidth="2" fill="none">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -45,9 +52,25 @@ export default function CustomPrint() {
                 <line x1="12" y1="3" x2="12" y2="15"></line>
               </svg>
             </div>
-            <h3>Drag & drop your 3D file</h3>
-            <p>.STL · .OBJ · .3MF · .STEP — UP TO 100 MB</p>
-          </div>
+            <h3>Click to upload your 3D file</h3>
+            <p>.STL · .OBJ · .3MF · .STEP</p>
+            <input 
+              type="file" 
+              id="3d-file-upload" 
+              name="attachment" 
+              accept=".stl,.obj,.3mf,.step" 
+              style={{ display: 'none' }}
+              required
+              onChange={(e) => {
+                const el = document.getElementById('file-name-display');
+                if (e.target.files[0]) {
+                  el.textContent = `Selected: ${e.target.files[0].name}`;
+                  el.style.color = '#fff';
+                }
+              }}
+            />
+            <p id="file-name-display" style={{ marginTop: '10px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>No file selected</p>
+          </label>
 
           <div className="config-section">
             <h4 className="section-label">MATERIAL</h4>
@@ -95,9 +118,9 @@ export default function CustomPrint() {
             <div className="config-section half">
               <h4 className="section-label">QUANTITY</h4>
               <div className="quantity-selector">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>−</button>
+                <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))}>−</button>
                 <span>{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                <button type="button" onClick={() => setQuantity(quantity + 1)}>+</button>
               </div>
             </div>
           </div>
@@ -121,50 +144,50 @@ export default function CustomPrint() {
         {/* Right Column: Estimate & Details */}
         <div className="cp-sidebar">
           <div className="estimate-card">
-            <h4 className="estimate-label">LIVE ESTIMATE</h4>
-            <div className="price-display">₹19</div>
+            <h4 className="estimate-label">PRINT ESTIMATE</h4>
+            <div className="price-display">TBD</div>
             
             <div className="estimate-breakdown">
-              <div className="breakdown-row">
-                <span>Est. weight</span>
-                <span>160g</span>
-              </div>
-              <div className="breakdown-row">
-                <span>Est. print time</span>
-                <span>110h</span>
-              </div>
               <div className="breakdown-row">
                 <span>Material</span>
                 <span>{material} · {color}</span>
               </div>
               <div className="breakdown-row">
-                <span>Setup fee</span>
-                <span>₹99 included</span>
+                <span>Quality</span>
+                <span>{layerHeight}</span>
+              </div>
+              <div className="breakdown-row">
+                <span>Density</span>
+                <span>{density}%</span>
+              </div>
+              <div className="breakdown-row">
+                <span>Quantity</span>
+                <span>{quantity}</span>
               </div>
             </div>
             
             <p className="estimate-disclaimer">
-              Final quote is confirmed by the owner after checking your file's geometry.
+              The final quote will be confirmed and emailed to you after our engineers check your file's geometry and printability.
             </p>
           </div>
 
           <div className="details-card">
             <h4 className="estimate-label">YOUR DETAILS</h4>
-            <form className="details-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="text" placeholder="Your name" className="dark-input" />
+            <div className="details-form">
+              <input type="text" name="name" placeholder="Your name" className="dark-input" required />
               <div className="form-row">
-                <input type="email" placeholder="Email" className="dark-input half-input" />
-                <input type="tel" placeholder="Phone" className="dark-input half-input" />
+                <input type="email" name="email" placeholder="Email" className="dark-input half-input" required />
+                <input type="tel" name="phone" placeholder="Phone" className="dark-input half-input" required />
               </div>
-              <textarea placeholder="Notes — deadlines, post-processing, anything..." className="dark-input text-area" rows="4"></textarea>
+              <textarea name="notes" placeholder="Notes — deadlines, post-processing, anything..." className="dark-input text-area" rows="4"></textarea>
               <button type="submit" className="btn-submit-request">
                 <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 Send print request to owner
               </button>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
