@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import CartSidebar from "./CartSidebar";
 
 export default function Navbar() {
@@ -52,16 +52,16 @@ export default function Navbar() {
         </nav>
         
         <div className="nav-actions">
-          <SignedOut>
+          <Show when="signed-out">
             <SignInButton mode="modal">
               <button className="btn-outline desktop-only" style={{ padding: '6px 16px', fontSize: '0.85rem' }}>Sign In</button>
             </SignInButton>
-          </SignedOut>
-          <SignedIn>
+          </Show>
+          <Show when="signed-in">
             <div className="avatar desktop-only">
               <UserButton afterSignOutUrl="/" />
             </div>
-          </SignedIn>
+          </Show>
           <button className="btn-order desktop-only" onClick={toggleCart}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
