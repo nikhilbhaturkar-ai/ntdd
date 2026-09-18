@@ -210,12 +210,14 @@ body {
     padding: 12px 30px;
     border: 1px solid var(--text-primary);
     color: var(--text-primary);
+    background-color: transparent;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.8rem;
     border-radius: 4px;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .btn-outline:hover {
