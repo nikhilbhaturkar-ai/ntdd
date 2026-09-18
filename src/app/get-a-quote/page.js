@@ -13,29 +13,32 @@ export default function GetAQuote() {
       <div className="quote-layout">
         {/* Left Column: Form */}
         <div className="quote-form-container">
-          <form className="quote-form" onSubmit={(e) => e.preventDefault()}>
+          <form className="quote-form" action="https://formsubmit.co/ntdd.business.solutions@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New 3D Printing Quote Request!" />
             <div className="form-row">
-              <input type="text" placeholder="Your name" className="dark-input half-input" />
-              <input type="tel" placeholder="Phone / WhatsApp" className="dark-input half-input" />
+              <input type="text" name="name" placeholder="Your name" className="dark-input half-input" required />
+              <input type="tel" name="phone" placeholder="Phone / WhatsApp" className="dark-input half-input" required />
             </div>
             
-            <input type="email" placeholder="Email" className="dark-input full-width" />
+            <input type="email" name="email" placeholder="Email" className="dark-input full-width" required />
             
             <div className="form-row">
-              <select className="dark-select half-input" defaultValue="">
+              <select name="project_type" className="dark-select half-input" defaultValue="" required>
                 <option value="" disabled>Project type...</option>
                 <option value="prototype">Prototyping</option>
                 <option value="batch">Batch Production</option>
                 <option value="custom">Custom Design</option>
                 <option value="other">Other</option>
               </select>
-              <input type="text" placeholder="Approx. quantity (e.g. 200)" className="dark-input half-input" />
+              <input type="text" name="quantity" placeholder="Approx. quantity (e.g. 200)" className="dark-input half-input" />
             </div>
             
             <textarea 
+              name="message"
               placeholder="Tell us about the project — dimensions, deadline, material preference..." 
               className="dark-input text-area" 
               rows="6"
+              required
             ></textarea>
             
             <button type="submit" className="btn-submit-request quote-btn">
@@ -69,7 +72,7 @@ export default function GetAQuote() {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              <a href="mailto:hello@forge3d.in">hello@forge3d.in</a>
+              <a href="mailto:ntdd.business.solutions@gmail.com">ntdd.business.solutions@gmail.com</a>
             </div>
           </div>
 
@@ -82,7 +85,7 @@ export default function GetAQuote() {
                 </svg>
                 <h4>The lab</h4>
               </div>
-              <p>Workshop 12, Makers Quarter,<br/>Bengaluru, Karnataka 560001</p>
+              <p>Streets of Europe, 24, Maan Road,<br/>Phase 1, Hinjawadi, Pune 411057</p>
             </div>
             
             <div className="quote-info-section">
