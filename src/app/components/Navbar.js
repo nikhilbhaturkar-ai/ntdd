@@ -58,7 +58,7 @@ export default function Navbar() {
             </SignInButton>
           </Show>
           <Show when="signed-in">
-            <div className="avatar desktop-only">
+            <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', height: '40px' }}>
               <UserButton afterSignOutUrl="/" />
             </div>
           </Show>
