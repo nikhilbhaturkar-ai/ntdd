@@ -6,6 +6,8 @@ import Link from 'next/link';
 
 export default function Shop() {
   const [activeCategory, setActiveCategory] = useState("All Products");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedMaterials, setSelectedMaterials] = useState({});
   
   const categories = ["All Products", "Home Decor", "Desk Accessories", "Toys & Games", "Art & Figurines", "Organizers", "Gifts"];
   
@@ -93,9 +95,22 @@ export default function Shop() {
     }
   ];
 
-  const filteredProducts = activeCategory === "All Products" 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
+  const filteredProducts = products.filter(p => {
+    const matchesCategory = activeCategory === "All Products" || p.category === activeCategory;
+    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const handleMaterialChange = (productId, material) => {
+    setSelectedMaterials(prev => ({ ...prev, [productId]: material }));
+  };
+
+  const handleOrderClick = (product) => {
+    const material = selectedMaterials[product.id] || product.material;
+    const message = `Hi! I'm interested in ordering the ${product.title} (${material}) for ${product.price}.`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/919175256675?text=${encodedMessage}`, '_blank');
+  };
 
   return (
     <div className="shop-page fade-in visible">
@@ -107,7 +122,12 @@ export default function Shop() {
       <div className="shop-filters-container">
         <div className="search-bar">
           <span className="search-icon">🔍</span>
-          <input type="text" placeholder="Search products..." />
+          <input 
+            type="text" 
+            placeholder="Search products..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
         
         <div className="filter-dropdown">
@@ -156,13 +176,17 @@ export default function Shop() {
               
               <div className="product-actions">
                 <div className="material-select">
-                  <select>
-                    <option>{product.material}</option>
-                    <option>PETG</option>
-                    <option>ABS</option>
+                  <select 
+                    value={selectedMaterials[product.id] || product.material}
+                    onChange={(e) => handleMaterialChange(product.id, e.target.value)}
+                  >
+                    <option value={product.material}>{product.material}</option>
+                    <option value="PETG">PETG</option>
+                    <option value="ABS">ABS</option>
+                    <option value="TPU Flex">TPU Flex</option>
                   </select>
                 </div>
-                <button className="btn-add">+ Add</button>
+                <button className="btn-add" onClick={() => handleOrderClick(product)}>Order</button>
               </div>
             </div>
           </div>
