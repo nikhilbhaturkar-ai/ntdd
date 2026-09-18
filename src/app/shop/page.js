@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCart } from '../context/CartContext';
 
 export default function Shop() {
   const { addToCart } = useCart();
