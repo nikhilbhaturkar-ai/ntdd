@@ -35,7 +35,6 @@ export default function Footer() {
           <ul>
             <li><Link href="/get-a-quote">Get a Quote</Link></li>
             <li><Link href="/about">About Us</Link></li>
-            <li><a href="mailto:ntdd.business.solution@gmail.com">Contact</a></li>
           </ul>
         </div>
         
